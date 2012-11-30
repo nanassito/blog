@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block metatag %}
+    <link rel="stylesheet" href="/blog/static/css/all.css">
+{% endblock %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+    <h1>Hi, I'm Dorian JAMINAIS, I <a href="http://www.eseo.fr/">study</a>, I <a href="http://www.argentina.ar/">travel</a>, I write code, I <a href="https://twitter.com/#!/mistyrouge">tweet</a>.</h1>
+    
+    <ul>
+    {% for article in articles %}
+        <li>
+            <time>{{article.date}}</time>
+            <a href="{% url longview article.title %}">{{article.title}}</a>
+        </li>
+    {% endfor %}
+    </ul>
+{% endblock %}

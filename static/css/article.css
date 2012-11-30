@@ -1,0 +1,47 @@
+p {
+    text-align:justify;
+    font-size: 1em;
+    line-height: 1.4em;
+}
+
+#comment ul{
+    list-style: none;
+    margin:0;
+    padding:0;
+}
+
+li p, li section{
+    display:inline-block;
+    margin:1em 0;
+    padding:0;
+    vertical-align:top;
+}
+
+#comment li section{
+    margin:0;
+    padding:0;
+    margin-bottom:0.5em;
+}
+
+#comment li section p{
+    margin:1em 0 0 0;
+}
+
+.username{
+    width:100px;
+    color:#b58900;
+}
+
+.comment_content{
+    width:437px;
+}
+
+form label{
+    vertical-align:top;
+    width:100px;
+    display:inline-block;
+}
+
+form textarea {
+    min-width:430px;
+}

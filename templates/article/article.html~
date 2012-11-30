@@ -1,0 +1,31 @@
+{% extends "base.html" %}{% load extra_filter %}{% load comments %}
+
+{% block metatag %}
+    <link rel="stylesheet" href="/blog/static/css/article.css">
+{% endblock %}
+
+{% block title %}{{ article.title }}{% endblock %}
+
+{% block content %}
+    <h1>{{ article.title }}</h1>
+    
+    <section id='article'>
+        {{ article.content|safe }}
+    </section>
+    
+    <section id='comment'>
+        <h2>Comments</h2>
+        <ul>
+        {% get_comment_list for article as comment_list %}
+        {% for comment in comment_list %}
+            <li id="comment{{ comment.id}}">
+                <p class="username">{{ comment.user_name }}</p>
+                <p class="comment_content">{{ comment.comment|force_escape|custom_format|safe }}</p>
+            </li>
+        {% endfor %}
+        </ul>
+        
+        <h2>What do you think ?</h2>
+        {% render_comment_form for article %}
+    </section>
+{% endblock %}

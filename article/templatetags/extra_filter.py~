@@ -1,0 +1,14 @@
+from django import template
+
+register = template.Library()
+
+@register.filter()
+def custom_format(value):
+    print value
+    value = value.replace("\n\n", '</p><p>')
+    value = value.replace("\r\n\r\n", '</p><p>')
+    print value
+    value = value.replace("\n", "<br/>")
+    value = value.replace("\r\n", "<br/>")
+    print value
+    return value

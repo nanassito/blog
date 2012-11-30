@@ -1,0 +1,49 @@
+# Create your views here.
+from django.shortcuts import render_to_response
+from models import Article
+from django.template import RequestContext
+
+import logging
+
+# Get an instance of a logger
+logger = logging.getLogger(__name__)
+
+def all_articles(request):
+    """ 
+        Display the list of all the articles
+    """
+    articles = Article.objects.all().order_by('date').reverse()
+    c = RequestContext(request, {
+        'articles':articles,
+    })
+    return render_to_response('article/all.html', c)
+
+
+def article_short_uri(request, article_id):
+    """
+        Display a specific article
+    """
+    try:
+        article = Article.objects.get(id=article_id)
+    except Article.DoesNotExists:
+        logger.error("404 : %s" % article_id)
+        return render_to_response('404.html', {})
+    c = RequestContext(request, {
+        'article':article,
+    })
+    return render_to_response('article/article.html', c)
+
+
+def article_long_uri(request, article_title):
+    """
+        Display a specific article
+    """
+    try:
+        article = Article.objects.get(title=article_title)
+    except Article.DoesNotExists:
+        logger.error("404 : %s" % article_title)
+        return render_to_response('404.html', {})
+    c = RequestContext(request, {
+        'article':article,
+    })
+    return render_to_response('article/article.html', c)

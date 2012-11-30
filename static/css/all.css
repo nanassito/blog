@@ -1,0 +1,16 @@
+ul{
+    list-style:none;
+    line-height:2em;
+}
+
+time{
+    margin-right:10px;
+    text-align:right;
+    width:150px;
+    display:inline-block;
+    margin-left:-35px;
+}
+
+h1{
+    margin-left:173px;
+}
